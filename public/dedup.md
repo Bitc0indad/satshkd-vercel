@@ -94,3 +94,27 @@ This is the main program that checks if the script is being run as the main modu
 If it is being run as the main module, it sets the **datafile** variable to the string "hkd_historical" (which is assumed to be a filename), and calls the **get_data_from_file** function with **datafile** as an argument. 
 
 The resulting **formatted data** is assigned to the formatted_data variable, although this variable is not used elsewhere in the script.
+
+References:
+
+https://github.com/bitkarrot/dca-calculator/blob/f66c07c02ee11d1f74880314fb0cc92151faa452/cache_data.py#L47
+
+```
+def get_data_from_file(datafile):
+    data = None
+    with open(datafile, "+r") as f:
+        raw = f.read()
+        data = json.loads(raw)
+        df = pd.json_normalize(data)
+        return format_df(df)
+```
+
+
+https://github.com/bitkarrot/dca-calculator/blob/f66c07c02ee11d1f74880314fb0cc92151faa452/app.py#L34
+
+```
+# Check for duplicates
+duplicates = df.index.duplicated(keep="first")
+# Remove duplicate rows
+df = df[~duplicates]
+```
