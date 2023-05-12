@@ -61,6 +61,12 @@ def format_df(df):
     return df
 ```
 
+- Testing each function one by one, meaning test duplicate date first then missing time
+- When using Chat GPT code sometimes provide non-working code
+- Write dedup to one file then and break it rename the function seperately with seperate output file
+- SOLID Principles, S - Single Purpose of on method
+- New rule be able to debug one function at a time 
+
 This defines the **format_df** function, which takes a DataFrame as an argument. 
 
 The function first removes any duplicate rows based on the index using **~df.index.duplicated(keep='last')**. 
